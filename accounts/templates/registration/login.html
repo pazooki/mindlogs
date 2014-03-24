@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+    {% if form.errors %}
+        <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Warning!</strong> {{ form.errors }}
+        </div>
+    {% endif %}
+    <div style="width: 100%;">
+        <div class="container-fluid" id="login-box" style="width: 30%; padding-top: 10%; margin: auto auto;">
+            {% include 'registration/login_block.html' %}
+        </div>
+    </div>
+{% endblock %}

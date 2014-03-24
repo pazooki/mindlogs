@@ -1,0 +1,70 @@
+{% extends 'base/base.html' %}
+{% block content %}
+{% if errors %}
+    <div class="alert">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Warning!</strong> {{ errors }}
+    </div>
+{% endif %}
+<div class="accordion" id="accordion2" style="padding-top: 10px;">
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <h4 class="accordion-toggle" data-toggle="collapse" data-parent="#a-activity" href="#c-activity">activity</h4>
+        </div>
+        <div id="c-activity" class="accordion-body collapse out">
+        <hr />
+            <div class="container">
+                <form class="form-inline" action="." method="post">
+                    {% csrf_token %}
+                    <input type="text" id="info" name="info" class="form-control" placeholder="Type something…" style="width:70%;">
+                    <button name="add" id="add" type="submit" class="btn btn-default" style="width:28%;">Add</button>
+                </form>
+            </div>
+        <hr />
+            <div class="accordion-inner">
+                <div class="accordion" id="accordion2">
+                    {% for material in top_activity %}
+                     <div class="row" style="padding-bottom: 1%;">
+                        <form action="." method="post">
+                        {% csrf_token %}
+                         <button type="button" class="btn btn-default btn-xs" style="width: 60%">
+                             <span class="pull-left">{{ material.info }}</span>
+                             <span class="label label-success pull-right">{{ material.created|date:"Y-m-d - H:i:s" }}</span>
+                         </button>
+                         <button name="delete" value="{{ material.id }}" type="submit" class="btn btn-danger btn-xs" style="width:18%;">Delete</button>
+                         <button name="archive" value="{{ material.id }}" type="submit" class="btn btn-warning btn-xs" style="width:18%;">Archive</button>
+                        </form>
+                     </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="accordion" id="accordion2">
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <h4 class="accordion-toggle" data-toggle="collapse" data-parent="#a-archive" href="#c-archive">Archive</h4>
+        </div>
+        <div id="c-archive" class="accordion-body collapse out">
+            <div class="accordion-inner">
+                <div class="accordion" id="accordion2">
+                    {% for material in top_archived_activity %}
+                     <div class="row" style="padding-bottom: 1%;">
+                        <form action="." method="post">
+                        {% csrf_token %}
+                         <button type="button" class="btn btn-default btn-xs" style="width: 80%">
+                             <span class="pull-left">{{ material.info }}</span>
+                             <span class="label label-warning pull-right">{{ material.archived|date:"Y-m-d - H:i:s" }}</span>
+                             <span class="label label-success pull-right">{{ material.created|date:"Y-m-d - H:i:s" }}</span>
+                         </button>
+                         <button name="delete" value="{{ material.id }}" type="submit" class="btn btn-danger btn-xs" style="width:18%;">Delete</button>
+                        </form>
+                     </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

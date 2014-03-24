@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    <div class="jumbotron">
+    <h1>Activation Failed!</h1>
+    <p>Tagline</p>
+    <p>
+        Please try again.
+        Activation Key: {{ activation_key }}
+    <a class="btn btn-primary btn-large" href="/accounts/register">
+    Register
+    </a>
+    </p>
+    </div>
+{% endblock %}

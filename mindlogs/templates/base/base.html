@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        {% block headextra %}{% endblock %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
+        <style type="text/css">
+            {% block extrastyle %}{% endblock %}
+        </style>
+        <link rel="shortcut icon" href="/favicon.ico"/>
+    </head>
+    <body style="padding-top: 70px;">
+        <div class="navbar navbar-fixed-top navbar-inverse">
+            <div class="container">
+                <a href="/" class="navbar-brand">MindLogs</a>
+                {% if user.is_authenticated %}
+                  <div class="nav-collapse collapse navbar-inverse-collapse ">
+                    <ul class="nav navbar-nav">
+                      <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">MyLogs<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li class="dropdown-header">Welcome {{ user.username|title }}</li>
+                          <li class="divider"></li>
+                          <li><a href="/activity/">activity</a></li>
+                          <li><a href="/dump/">Dump</a></li>
+                          <li><a href="/routines/">Routines</a></li>
+                          <li><a href="/library/">Library</a></li>
+                          <li><a href="/nfb/">NeuroFeedBack</a></li>
+                          <li class="divider"></li>
+                          <li class="dropdown-header">Stats</li>
+                          <li><a href="/mylogs/">MyLogs</a></li>
+                          <li class="divider"></li>
+                          <li><a href="/accounts/logout">Logout</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                    <form method="get" action="/search/?" class="navbar-form pull-right">
+                      <input type="text" placeholder="Search" class="form-control" id="id_q" name="q">
+                    </form>
+                  </div><!-- /.nav-collapse -->
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% block content %}
+        {% endblock %}
+        <hr />
+        <div id="footer">
+            <div class="container">
+                <p class="muted credit">&copy; Mindlogs 2013</p>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // This is more like it!
+  });
+</script>
+{% block extrajs %}{% endblock %}
