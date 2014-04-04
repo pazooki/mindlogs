@@ -1,4 +1,5 @@
-from snippets.permissions import IsOwnerOrReadOnly
+from activities.permissions import IsOwnerOrReadOnly
+from rest_framework import permissions
 from django.db import models
 
 # Create your models here.
