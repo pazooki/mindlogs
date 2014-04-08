@@ -1,5 +1,4 @@
-from django.contrib.auth.models import User
-from blog.models import Post
+from blog.models import Post, Author
 from rest_framework import serializers
 
 
@@ -10,9 +9,9 @@ class PostSerializer(serializers.ModelSerializer):
         fields = ('id', 'author', 'title', 'body')
 
 
-class UserSerializer(serializers.ModelSerializer):
+class AuthorSerializer(serializers.ModelSerializer):
     posts = serializers.PrimaryKeyRelatedField(many=True)
 
     class Meta:
-        model = User
-        fields = ('id', 'username', 'email', 'first_name', 'last_name')
+        model = Author
+        fields = ('id', 'username', 'posts')

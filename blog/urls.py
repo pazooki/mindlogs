@@ -6,9 +6,9 @@ from blog import views
 urlpatterns = patterns('',
 
 
-    url(r'users/', views.UserList.as_view(), name='user_list'),
-    url(r'users/^$', views.UserList.as_view(), name='user_list'),
-    url(r'users/(?P<pk>[0-9]+)/$', views.UserList.as_view(), name='user_detail'),
+    url(r'authors/', views.AuthorList.as_view(), name='author_list'),
+    url(r'authors/^$', views.AuthorList.as_view(), name='author_list'),
+    url(r'authors/(?P<pk>[0-9]+)/$', views.AuthorList.as_view(), name='author_detail'),
 
     url(r'posts/', views.PostList.as_view(), name='post_list'),
     url(r'posts/^$', views.PostList.as_view(), name='post_list'),

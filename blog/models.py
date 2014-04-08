@@ -1,11 +1,8 @@
 from django.db import models
-
 from django.contrib.auth.models import User
 
-
-class User(User):
-    pass
-
+class Author(models.Model):
+    user = models.OneToOneField(User)
 
 class Post(models.Model):
     author = models.ForeignKey(User, related_name='posts')
