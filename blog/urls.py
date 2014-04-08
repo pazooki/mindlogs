@@ -1,21 +1,18 @@
 from django.conf.urls import patterns, url, include
+from rest_framework.urlpatterns import format_suffix_patterns
+from blog import views
 
-from blog.api import UserList, UserDetail
-from blog.api import PostList, PostDetail, UserPostList
-
-
-user_urls = patterns('',
-    url(r'^/(?P<username>[0-9a-zA-Z_-]+)/posts$', UserPostList.as_view(), name='userpost-list'),
-    url(r'^/(?P<username>[0-9a-zA-Z_-]+)$', UserDetail.as_view(), name='user-detail'),
-    url(r'^$', UserList.as_view(), name='user-list')
-)
-
-post_urls = patterns('',
-    url(r'^/(?P<pk>\d+)$', PostDetail.as_view(), name='post-detail'),
-    url(r'^$', PostList.as_view(), name='post-list')
-)
 
 urlpatterns = patterns('',
-    url(r'^users', include(user_urls)),
-    url(r'^posts', include(post_urls)),
+
+
+    url(r'users/', views.UserList.as_view(), name='user_list'),
+    url(r'users/^$', views.UserList.as_view(), name='user_list'),
+    url(r'users/(?P<pk>[0-9]+)/$', views.UserList.as_view(), name='user_detail'),
+
+    url(r'posts/', views.PostList.as_view(), name='post_list'),
+    url(r'posts/^$', views.PostList.as_view(), name='post_list'),
+    url(r'posts/(?P<pk>[0-9]+)/$', views.PostList.as_view(), name='post_detail'),
 )
+
+urlpatterns = format_suffix_patterns(urlpatterns)
