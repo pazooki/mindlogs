@@ -122,8 +122,9 @@ INSTALLED_APPS = (
     'south',
     'rest_framework',
     'mindlogs',
-    'account',
-    'activities',
+    'blog',
+    # 'account',
+    # 'activities',
 )
 
 AUTHENTICATION_BACKENDS = (

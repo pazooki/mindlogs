@@ -11,6 +11,7 @@ urlpatterns = patterns(
 
     # APPs
     url(r'^$', IndexView.as_view(), name='index'),
+    url(r'^blog/', include('blog.urls', namespace='blog')),
     url(r'^account/', include('account.urls', namespace='account')),
     url(r'^activities/', include('activities.urls', namespace='activities')),
 
