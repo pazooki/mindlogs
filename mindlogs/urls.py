@@ -13,7 +13,7 @@ urlpatterns = patterns(
     url(r'^$', IndexView.as_view(), name='index'),
 
     # Blog
-    url(r'^blog/', include('blog.urls', namespace='blog')),
+    url(r'^blog/', include('blog.urls')),
     # auth-api for blog
     url(r'^blog/api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
