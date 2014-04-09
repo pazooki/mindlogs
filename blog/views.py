@@ -1,49 +1,30 @@
-from blog.models import Post, Author
-from blog.serializers import PostSerializer, AuthorSerializer
-from rest_framework import generics, permissions
-from blog.permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
-
-# root view
+from django.contrib.auth.models import User
+from rest_framework import permissions
 from rest_framework import renderers
-from rest_framework.decorators import api_view
+from rest_framework import viewsets
+from rest_framework.decorators import link
 from rest_framework.response import Response
-from rest_framework.reverse import reverse
+from blog.models import Post, Author
+from blog.permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
+from blog.serializers import PostSerializer, AuthorSerializer
 
 
-@api_view(('GET',))
-def api_root(request, format=None):
-    return Response({
-        'authors': reverse('author-list', request=request, format=format),
-        'posts': reverse('post-list', request=request, format=format)
-    })
-
-
-class PostList(generics.ListCreateAPIView):
+class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,)
 
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsAdminOrReadOnly)
+    @link(renderer_classes=(renderers.StaticHTMLRenderer,))
+    def highlight(self, request, *args, **kwargs):
+        post = self.get_object()
+        return Response(post.highlighted)
 
     def pre_save(self, obj):
         obj.author = self.request.user
 
 
-class PostDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
-
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsAdminOrReadOnly,)
-
-    def pre_save(self, obj):
-        obj.author = self.request.user
-
-
-class AuthorList(generics.ListAPIView):
+class AuthorViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
 
-
-class AuthorDetail(generics.RetrieveAPIView):
-    queryset = Author.objects.all()
-    serializer_class = AuthorSerializer
 
