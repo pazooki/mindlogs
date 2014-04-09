@@ -44,4 +44,4 @@ nosetests.xml
 secrets.py
 
 # Database
-migration/
+migrations/
