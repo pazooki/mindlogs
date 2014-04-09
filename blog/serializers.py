@@ -10,7 +10,7 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url', 'id', 'author', 'title', 'body')
 
 class AuthorSerializer(serializers.HyperlinkedModelSerializer):
-    posts = serializers.HyperlinkedRelatedField(many=True, view_name='post-list', format='html')
+    posts = serializers.HyperlinkedRelatedField(many=True, view_name='post-detail')
 
     class Meta:
         model = Author
