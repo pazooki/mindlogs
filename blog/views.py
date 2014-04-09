@@ -64,3 +64,4 @@ class AuthorList(generics.ListAPIView):
 class AuthorDetail(generics.RetrieveAPIView):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
+
