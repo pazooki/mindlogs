@@ -13,13 +13,3 @@ class Post(models.Model):
 
     class Meta:
         ordering = ('created',)
-
-
-class Comment(models.Model):
-    post = models.ForeignKey(Post, related_name='comments')
-    created = models.DateTimeField(auto_now_add=True)
-    author = models.CharField(max_length=60)
-    body = models.TextField(blank=False, null=False)
-
-    class Meta:
-        ordering = ('created',)

@@ -1,5 +1,5 @@
-from blog.models import Post, Comment, Author
-from blog.serializers import PostSerializer, AuthorSerializer, CommentSerializer
+from blog.models import Post, Author
+from blog.serializers import PostSerializer, AuthorSerializer
 from rest_framework import generics, permissions
 from blog.permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
 
@@ -37,24 +37,6 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     def pre_save(self, obj):
         obj.author = self.request.user
 
-class CommentList(generics.ListCreateAPIView):
-    queryset = Post.objects.all()
-    serializer_class = CommentSerializer
-
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly)
-
-    def pre_save(self, obj):
-        obj.author = self.request.user
-
-
-class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
-
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly)
-
-    def pre_save(self, obj):
-        obj.author = self.request.user
 
 class AuthorList(generics.ListAPIView):
     queryset = Author.objects.all()
