@@ -1,20 +1,13 @@
 from django.conf.urls import patterns, url, include
-from rest_framework.urlpatterns import format_suffix_patterns
+from rest_framework.routers import DefaultRouter
 from blog import views
 
+router = DefaultRouter()
+router.register(r'authors', views.AuthorViewSet)
+router.register(r'posts', views.PostViewSet)
 
-urlpatterns = patterns('',
-
-    url(r'^$', 'api_root'),
-
-    url(r'^authors/', views.AuthorList.as_view()),
-    url(r'^authors/^$', views.AuthorList.as_view()),
-    url(r'^authors/(?P<pk>\w+)/$', views.AuthorDetail.as_view()),
-
-    url(r'^posts/', views.PostList.as_view()),
-    url(r'^posts/^$', views.PostList.as_view()),
-    url(r'^posts/(?P<pk>[0-9]+)/$', views.PostDetail.as_view()),
-
+urlpatterns = patterns(
+    '',
+    url(r'^', include(router.urls)),
 )
 
-urlpatterns = format_suffix_patterns(urlpatterns)

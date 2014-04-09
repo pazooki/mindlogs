@@ -118,7 +118,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    # 'social.apps.django_app.default',
+    'social.apps.django_app.default',
     'south',
     'rest_framework',
     'mindlogs',
