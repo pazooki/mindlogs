@@ -1,12 +1,12 @@
-from django.contrib.auth.models import User
 from rest_framework import permissions
 from rest_framework import renderers
 from rest_framework import viewsets
 from rest_framework.decorators import link
 from rest_framework.response import Response
-from blog.models import Post, Author
-from blog.permissions import IsAdminOrReadOnly
-from blog.serializers import PostSerializer, AuthorSerializer
+
+from blog.api.v1.models import Post, Author
+from blog.api.v1.permissions import IsAdminOrReadOnly
+from blog.api.v1.serializers import PostSerializer, AuthorSerializer
 
 
 class PostViewSet(viewsets.ModelViewSet):

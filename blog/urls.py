@@ -1,13 +1,14 @@
-from django.conf.urls import patterns, url, include
-from rest_framework.routers import DefaultRouter
-from blog import views
+from django.conf.urls import patterns
+from blog.api.v1.urls import urlpatterns as v1_urls
 
-router = DefaultRouter()
-router.register(r'authors', views.AuthorViewSet)
-router.register(r'posts', views.PostViewSet)
+print '#'*200
+print v1_urls
+print '#'*200
 
 urlpatterns = patterns(
-    '',
-    url(r'^', include(router.urls)),
+    ''
 )
+
+urlpatterns += v1_urls
+
 
