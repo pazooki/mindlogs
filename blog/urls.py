@@ -1,14 +1,18 @@
-from django.conf.urls import patterns
-from blog.api.v1.urls import urlpatterns as v1_urls
+from django.conf.urls import patterns, url, include
+from rest_framework.routers import DefaultRouter
+from blog.api.v1 import views as v1_views
 
-print '#'*200
-print v1_urls
-print '#'*200
+
+router = DefaultRouter()
+router.register(r'v1/authors', v1_views.AuthorViewSet)
+router.register(r'v1/posts', v1_views.PostViewSet)
 
 urlpatterns = patterns(
-    ''
+    '',
+    url(r'^api/', include(router)),
 )
 
-urlpatterns += v1_urls
 
-
+print '#'*200
+print urlpatterns
+print '#'*200

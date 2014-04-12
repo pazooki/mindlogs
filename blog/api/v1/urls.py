@@ -9,6 +9,7 @@ router.register(r'authors', views.AuthorViewSet)
 router.register(r'posts', views.PostViewSet)
 
 urlpatterns = patterns(
+    '',
     url(r'^', include(router.urls)),
 )
 
