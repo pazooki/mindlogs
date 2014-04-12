@@ -4,8 +4,8 @@ from rest_framework import viewsets
 from rest_framework.decorators import link
 from rest_framework.response import Response
 
-from blog.api.v1.models import Post, Author
-from blog.api.v1.permissions import IsAdminOrReadOnly
+from blog.models import Post, Author
+from blog.permissions import IsAdminOrReadOnly
 from blog.api.v1.serializers import PostSerializer, AuthorSerializer
 
 
