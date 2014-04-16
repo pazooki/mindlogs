@@ -4,4 +4,4 @@ from django.test import TestCase
 class testPost(TestCase):
 
     def test_submit(self):
-        self.assertTrue()
+        self.assertTrue(True)
