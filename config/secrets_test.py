@@ -6,7 +6,7 @@ ADMINS = (('', ''),)
 
 ALLOWED_HOSTS = ['']
 
-SECRET_KEY = ''
+SECRET_KEY = '-' * 50
 
 DATABASES = {
     'default': {
