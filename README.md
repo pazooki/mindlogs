@@ -1,5 +1,6 @@
 MindLogs
 ==============
+[![Build Status](https://travis-ci.org/pazooki/mindlogs.svg?branch=master)](https://travis-ci.org/pazooki/mindlogs)
 
 MVP - API
 --------------
