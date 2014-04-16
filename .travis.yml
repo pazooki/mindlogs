@@ -9,5 +9,8 @@ addons:
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install: pip install -r requirements.txt
 
+before_script:
+  - psql -c 'create database mindlogs;' -U postgres
+
 # command to run tests, e.g. python setup.py test
 script: python manage.py test
