@@ -7,7 +7,10 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 PROJECT_DIR = os.path.dirname(BASE_DIR)
 sys.path.insert(0, PROJECT_DIR)
 
-from config.secrets import *
+try:
+    from config.secrets import *
+except ImportError:
+    from config.secrets_test import *
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
