@@ -5,7 +5,6 @@ import sys
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 PROJECT_DIR = os.path.dirname(BASE_DIR)
-# sys.path.insert(0, PROJECT_DIR)
 
 try:
     from config.secrets import *
@@ -44,6 +43,8 @@ USE_TZ = True
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+FIXTURE_DIRS = os.path.join(PROJECT_DIR, 'fixtures/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.

@@ -1,0 +1,9 @@
+[
+  {
+    "model": "blog.author",
+    "pk": 1,
+    "fields": {
+      "author_id": "1",
+    }
+  }
+]

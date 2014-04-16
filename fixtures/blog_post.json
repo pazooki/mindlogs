@@ -1,0 +1,32 @@
+[
+  {
+    "model": "blog.post",
+    "pk": 1,
+    "fields": {
+      "author": "1",
+      "title": "title_1",
+      "body": "body_1",
+      "created_at": "2014-03-01T13:20:30+03:00"
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 2,
+    "fields": {
+      "author": "1",
+      "title": "title_2",
+      "body": "body_2",
+      "created_at": "2014-03-01T13:20:30+03:00"
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 3,
+    "fields": {
+      "author": "1",
+      "title": "title_3",
+      "body": "body_3",
+      "created_at": "2014-03-01T13:20:30+03:00"
+    }
+  }
+]
