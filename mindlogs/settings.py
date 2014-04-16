@@ -5,7 +5,7 @@ import sys
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 PROJECT_DIR = os.path.dirname(BASE_DIR)
-sys.path.insert(0, PROJECT_DIR)
+# sys.path.insert(0, PROJECT_DIR)
 
 try:
     from config.secrets import *
