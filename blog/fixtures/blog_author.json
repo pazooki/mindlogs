@@ -1,9 +1,20 @@
 [
-  {
-    "model": "blog.author",
-    "pk": 1,
+{
+    "pk": 1, 
+    "model": "auth.user", 
     "fields": {
-      "name": "author_1",
+        "username": "mindlogger", 
+        "first_name": "", 
+        "last_name": "", 
+        "is_active": true, 
+        "is_superuser": true, 
+        "is_staff": true, 
+        "last_login": "2014-04-17T02:46:29.114Z", 
+        "groups": [], 
+        "user_permissions": [], 
+        "password": "pbkdf2_sha256$12000$iFp2u1X0v2ab$vBWJO2FN+NtaUn4ZDi4q/sVtk7CNUkPMRAZ/nmdvDNI=", 
+        "email": "mindlogger@mindlogs.org", 
+        "date_joined": "2014-04-17T02:46:29.114Z"
     }
-  }
+}
 ]
