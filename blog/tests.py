@@ -15,7 +15,7 @@ class PostTests(APITestCase):
         test_fields = ['author', 'title', 'body']
         post_id = '1'
         data = PostSerializer(Post.objects.get(pk=post_id)).data
-        url = reverse('post-detail')
+        url = reverse('post-list')
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED, msg=(url, response.status_code, data))
         self.assertEqual(
@@ -28,7 +28,7 @@ class PostTests(APITestCase):
         test_fields = ['author', 'title', 'body']
         post_id = '1'
         data = PostSerializer(Post.objects.get(pk=post_id)).data
-        url = reverse('post-detail', args=[post_id])
+        url = reverse('post-detail', kwargs={'pk': post_id})
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK, msg=(url, response.status_code, data))
         self.assertEqual(
@@ -38,8 +38,7 @@ class PostTests(APITestCase):
         )
 
     def test_delete_post(self):
-        post_id = '1'
-        data = PostSerializer(Post.objects.get(pk=post_id)).data
-        url = reverse('post-detail', args=[post_id])
+        # TODO: fix this ugly url
+        url = reverse('post-list') + '1/'
         response = self.client.delete(url, format='json')
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT, msg=(url, response.status_code, data))
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT, msg=(url, response.status_code))
