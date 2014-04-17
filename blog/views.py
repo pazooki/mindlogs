@@ -14,11 +14,6 @@ class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsAdminOrReadOnly,)
 
-    @link(renderer_classes=(renderers.StaticHTMLRenderer,))
-    def highlight(self, request, *args, **kwargs):
-        post = self.get_object()
-        return Response(post.highlighted)
-
     def pre_save(self, obj):
         obj.author = self.request.user
 
