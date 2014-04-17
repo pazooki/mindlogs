@@ -2,9 +2,10 @@ from django.core.urlresolvers import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 from blog.models import Post
+from django.core import management
 
 class PostTests(APITestCase):
-    fixtures = ['blog_post.json']
+    fixtures = ['blog_author.json', 'blog_post.json']
 
     @classmethod
     def setUpClass(cls):
