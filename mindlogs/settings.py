@@ -220,6 +220,9 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAdminUser',
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ],
+    'TEST_REQUEST_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer'
+    ),
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
     'PAGINATE_BY': 2,
 }
