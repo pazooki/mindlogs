@@ -1,3 +1,5 @@
+USER = 'mindlogger'
+GIT_URL = 'https://github.com/pazooki/mindlogs.git'
 AWS_ACCESS_KEY_ID = ''
 AWS_SECRET_ACCESS_KEY = ''
 KEY_NAME = ''
