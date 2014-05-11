@@ -39,6 +39,7 @@ nosetests.xml
 .idea
 .idea/*
 .vagrant/
+.venv/
 
 # Config - Passwords
 secrets.py
