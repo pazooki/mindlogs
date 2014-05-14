@@ -13,6 +13,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         ansible.extra_vars = { ansible_ssh_user: 'vagrant' }
         ansible.verbose = 'vv'
         ansible.limit = 'all'
-        ansible.ask_vault_pass = true
+        ansible.raw_arguments  = "--ask-vault-pass"
     end
 end
